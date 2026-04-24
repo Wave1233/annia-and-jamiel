@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annia & Jamiel — June 20, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --crimson:   #C8102E;
+  --noir:      #0E0E0E;
+  --ivory:     #F7F3EC;
+  --gold:      #B8975A;
+  --taupe:     #C4B5A2;
+  --blush:     #EDD9C6;
+  --smoke:     #E5E0D8;
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  background: var(--ivory);
+  color: var(--noir);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 24px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 300ms ease;
+}
+nav.scrolled {
+  background: rgba(247, 243, 236, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--smoke);
+  padding: 16px 40px;
+}
+.nav-mono {
+  font-family: var(--serif);
+  font-size: 18px; font-weight: 400; letter-spacing: 0.08em;
+  color: var(--ivory); transition: color 300ms; cursor: pointer;
+  text-decoration: none;
+}
+nav.scrolled .nav-mono { color: var(--noir); }
+.nav-links { display: flex; gap: 36px; }
+.nav-link {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(247,243,236,0.8); background: none; border: none; cursor: pointer;
+  transition: all 200ms; padding: 0;
+  text-decoration: none; display: inline-block;
+}
+nav.scrolled .nav-link { color: var(--noir); }
+.nav-link:hover { opacity: 1; color: var(--crimson) !important; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; height: 100vh; min-height: 700px;
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: center 15%;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(14,14,14,0.15) 0%,
+    rgba(14,14,14,0.05) 35%,
+    rgba(14,14,14,0.6) 80%,
+    rgba(14,14,14,0.82) 100%
+  );
+}
+.hero-content {
+  position: relative; text-align: center;
+  padding: 0 24px 72px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.hero-eyebrow {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.38em; text-transform: uppercase;
+  color: rgba(247,243,236,0.55); margin-bottom: 24px;
+}
+.hero-names {
+  font-family: var(--serif);
+  font-size: clamp(80px, 14vw, 160px);
+  font-weight: 300; line-height: 0.88; letter-spacing: -0.01em;
+  color: var(--ivory);
+}
+.hero-and {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 300; font-style: italic;
+  color: var(--gold); line-height: 1.2; margin: 6px 0;
+}
+.hero-rule {
+  width: 1px; height: 48px;
+  background: rgba(184,151,90,0.5);
+  margin: 28px auto;
+}
+.hero-meta {
+  font-family: var(--sans); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(247,243,236,0.7); margin-bottom: 36px;
+}
+.btn-ghost {
+  display: inline-block; padding: 14px 40px;
+  border: 1px solid rgba(247,243,236,0.6);
+  color: var(--ivory);
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  text-decoration: none; background: transparent; cursor: pointer;
+  transition: all 200ms ease;
+}
+.btn-ghost:hover {
+  background: var(--ivory); color: var(--noir);
+  border-color: var(--ivory);
+}
+.btn-ghost:active { transform: scale(0.97); }
+
+/* ── WELCOME ── */
+.welcome {
+  background: var(--ivory);
+  padding: 112px 24px 96px;
+  text-align: center;
+}
+.section-eyebrow {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--taupe); margin-bottom: 20px;
+}
+.welcome-headline {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 300; font-style: italic;
+  color: var(--noir); margin-bottom: 6px; line-height: 1.15;
+}
+.welcome-date-line {
+  font-family: var(--sans); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--taupe); margin-bottom: 48px;
+}
+.welcome-rule {
+  width: 40px; height: 1px; background: var(--gold);
+  margin: 0 auto 48px;
+}
+.welcome-body {
+  max-width: 540px; margin: 0 auto 56px;
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 23px);
+  font-weight: 300; line-height: 1.8; color: var(--noir);
+}
+.welcome-sig {
+  font-family: var(--serif); font-size: 28px;
+  font-style: italic; font-weight: 300;
+  color: var(--crimson); margin-bottom: 64px;
+}
+.welcome-rsvp-hint {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--taupe); margin-bottom: 12px;
+}
+.btn-crimson {
+  display: inline-block; padding: 16px 48px;
+  background: var(--crimson); color: var(--ivory);
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 200ms ease;
+  border-radius: 0;
+}
+.btn-crimson:hover { background: #9E0B24; }
+.btn-crimson:active { transform: scale(0.97); }
+
+/* ── COUNTDOWN ── */
+.countdown-wrap {
+  margin: 64px 0 0;
+}
+.countdown-label {
+  font-family: var(--serif); font-size: clamp(16px, 2vw, 20px);
+  font-style: italic; font-weight: 300;
+  color: var(--taupe); margin-bottom: 32px;
+}
+.countdown {
+  display: flex; justify-content: center;
+  border: 1px solid var(--smoke);
+  max-width: 440px; margin: 0 auto 20px;
+}
+.countdown-unit {
+  flex: 1; padding: 28px 12px 22px;
+  border-right: 1px solid var(--smoke);
+  text-align: center;
+}
+.countdown-unit:last-child { border-right: none; }
+.countdown-num {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 300; color: var(--noir); line-height: 1; display: block;
+}
+.countdown-lbl {
+  font-family: var(--sans); font-size: 8px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--taupe); margin-top: 8px; display: block;
+}
+.countdown-phrase {
+  font-family: var(--serif); font-size: clamp(15px, 1.8vw, 18px);
+  font-style: italic; color: var(--taupe);
+}
+
+/* ── PHOTO SPLIT ── */
+.photo-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 560px;
+}
+.photo-split-img {
+  position: relative; overflow: hidden;
+}
+.photo-split-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center 20%; display: block;
+  transition: transform 600ms ease;
+}
+.photo-split-img:hover img { transform: scale(1.03); }
+.photo-split-text {
+  background: var(--noir);
+  padding: 72px 56px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.photo-split-label {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+.photo-split-headline {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); line-height: 1.15; margin-bottom: 8px;
+}
+.photo-split-sub {
+  font-family: var(--sans); font-size: 9px; font-weight: 400;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(196,181,162,0.6); margin-bottom: 36px;
+}
+.photo-split-body {
+  font-family: var(--serif); font-size: 17px; font-weight: 300;
+  line-height: 1.85; color: rgba(247,243,236,0.72);
+  max-width: 360px;
+}
+.photo-split-body em {
+  color: var(--gold); font-style: italic;
+}
+
+/* ── THE DAY ── */
+.the-day {
+  background: var(--ivory);
+  padding: 96px 24px; text-align: center;
+}
+.the-day-title {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--noir); margin-bottom: 10px;
+}
+.the-day-sub {
+  font-family: var(--serif); font-size: clamp(15px, 2vw, 19px);
+  font-style: italic; color: var(--taupe); margin-bottom: 72px;
+}
+.timeline {
+  display: flex; justify-content: center;
+  max-width: 860px; margin: 0 auto;
+  position: relative;
+}
+.timeline::before {
+  content: ''; position: absolute; top: 35px; left: 8%; right: 8%;
+  height: 1px; background: var(--smoke);
+}
+.timeline-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 10px; padding: 0 6px;
+  position: relative;
+}
+.timeline-dot {
+  width: 70px; height: 70px;
+  border: 1px solid var(--smoke);
+  background: var(--ivory);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.timeline-dot svg {
+  width: 26px; height: 26px; stroke: var(--crimson);
+  fill: none; stroke-width: 1.3;
+}
+.timeline-time {
+  font-family: var(--sans); font-size: 8px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--crimson);
+}
+.timeline-name {
+  font-family: var(--serif); font-size: 13px; font-weight: 400;
+  color: var(--noir); text-align: center; line-height: 1.3;
+}
+
+/* ── DETAILS ── */
+.details {
+  background: var(--noir); padding: 96px 40px;
+}
+.details-inner { max-width: 1100px; margin: 0 auto; }
+.details-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-style: italic; font-weight: 300; color: var(--ivory);
+  margin-bottom: 56px; text-align: center;
+}
+.details-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: rgba(255,255,255,0.06);
+}
+.details-cell {
+  background: var(--noir); padding: 40px 36px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.details-cell-label {
+  font-family: var(--sans); font-size: 8px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.details-cell-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 400; color: var(--ivory); margin-bottom: 10px;
+}
+.details-cell-body {
+  font-family: var(--sans); font-size: 13px; font-weight: 300;
+  color: rgba(196,181,162,0.6); line-height: 1.75;
+}
+
+/* ── RSVP ── */
+.rsvp-section {
+  position: relative; overflow: hidden;
+  background: var(--crimson);
+  padding: 120px 24px; text-align: center;
+}
+.rsvp-section::before {
+  content: 'RSVP';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: clamp(200px, 30vw, 360px);
+  font-weight: 700; letter-spacing: -0.04em;
+  color: rgba(247,243,236,0.06);
+  white-space: nowrap; user-select: none;
+  line-height: 1;
+}
+.rsvp-eyebrow {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(247,243,236,0.55); margin-bottom: 20px;
+  position: relative;
+}
+.rsvp-title {
+  font-family: var(--serif);
+  font-size: clamp(56px, 9vw, 112px);
+  font-weight: 300; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ivory); line-height: 0.9; margin-bottom: 12px;
+  position: relative;
+}
+.rsvp-sub {
+  font-family: var(--serif);
+  font-size: clamp(20px, 3vw, 32px);
+  font-style: italic; font-weight: 300;
+  color: rgba(247,243,236,0.75); margin-bottom: 48px;
+  position: relative;
+}
+.rsvp-body {
+  max-width: 460px; margin: 0 auto 48px;
+  font-family: var(--sans); font-size: 14px; font-weight: 300;
+  line-height: 1.8; color: rgba(247,243,236,0.65);
+  position: relative;
+}
+.rsvp-deadline {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(247,243,236,0.5); margin-bottom: 20px;
+  position: relative;
+}
+.btn-ivory {
+  position: relative;
+  display: inline-block; padding: 16px 52px;
+  border: 1px solid var(--ivory); color: var(--crimson);
+  background: var(--ivory);
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: all 200ms ease;
+}
+.btn-ivory:hover { background: transparent; color: var(--ivory); }
+.btn-ivory:active { transform: scale(0.97); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--noir); padding: 60px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-mono {
+  font-family: var(--serif); font-size: 30px;
+  font-weight: 300; color: var(--gold); letter-spacing: 0.06em;
+}
+.footer-info {
+  font-family: var(--sans); font-size: 9px; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(196,181,162,0.4); margin-top: 8px;
+}
+.footer-credit {
+  font-family: var(--sans); font-size: 9px;
+  letter-spacing: 0.1em; color: rgba(196,181,162,0.3);
+  text-align: right;
+}
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 20px 20px; }
+  nav.scrolled { padding: 14px 20px; }
+  .nav-links { gap: 20px; }
+  .photo-split { grid-template-columns: 1fr; }
+  .photo-split-img { height: 50vw; }
+  .photo-split-text { padding: 52px 32px; }
+  .timeline { flex-wrap: wrap; gap: 32px; }
+  .timeline::before { display: none; }
+  .timeline-item { width: 30%; }
+  .details { padding: 72px 20px; }
+  .details-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; }
+  .footer-credit { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-mono" href="#hero">A & J</a>
+  <div class="nav-links">
+    <a class="nav-link" href="#welcome">Welcome</a>
+    <a class="nav-link" href="#the-day">The Day</a>
+    <a class="nav-link" href="#details">Details</a>
+    <a class="nav-link" href="#rsvp">RSVP</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <img class="hero-img" src="assets/photos/staircase-red.jpg" alt="Annia & Jamiel">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Are getting married</div>
+    <div class="hero-names">Annia</div>
+    <div class="hero-and">& Jamiel</div>
+    <div class="hero-rule"></div>
+    <div class="hero-meta">June 20, 2026 &nbsp;·&nbsp; Montego Bay, Jamaica</div>
+    <a class="btn-ghost" href="#rsvp">RSVP</a>
+  </div>
+</section>
+
+<!-- WELCOME -->
+<section class="welcome" id="welcome">
+  <div class="section-eyebrow reveal">Welcome</div>
+  <div class="welcome-headline reveal">June 20th, 2026</div>
+  <div class="welcome-date-line reveal">Montego Bay, Jamaica</div>
+  <div class="welcome-rule reveal"></div>
+
+  <div class="welcome-body reveal">
+    It begins with us — and it wouldn't be complete without you.
+    We can't wait to share this unforgettable day with the people we love most.
+  </div>
+
+  <div class="welcome-sig reveal">Annia & Jamiel</div>
+
+  <div class="welcome-rsvp-hint reveal">Join us in Jamaica</div>
+  <a class="btn-crimson reveal" href="#rsvp">RSVP Now</a>
+
+  <!-- Countdown -->
+  <div class="countdown-wrap reveal">
+    <div class="countdown-label" id="days-phrase">— days until we say "I do."</div>
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">—</span>
+        <span class="countdown-lbl">Days</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">—</span>
+        <span class="countdown-lbl">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">—</span>
+        <span class="countdown-lbl">Minutes</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">—</span>
+        <span class="countdown-lbl">Seconds</span>
+      </div>
+    </div>
+    <div class="countdown-phrase">until we say "I do."</div>
+  </div>
+</section>
+
+<!-- PHOTO + TEXT SPLIT -->
+<div class="photo-split">
+  <div class="photo-split-img">
+    <img src="assets/photos/balcony-embrace.jpg" alt="Annia & Jamiel">
+  </div>
+  <div class="photo-split-text">
+    <div class="photo-split-label">Save the Date</div>
+    <div class="photo-split-headline">Montego Bay,<br>Jamaica</div>
+    <div class="photo-split-sub">June 20, 2026</div>
+    <div class="photo-split-body">
+      A celebration of love, family, and something unforgettable.<br><br>
+      <em>Cocktails at 6. Dinner at 7:30. Dancing until we can't.</em>
+    </div>
+  </div>
+</div>
+
+<!-- THE DAY -->
+<section class="the-day" id="the-day">
+  <div class="the-day-title reveal">The Day</div>
+  <div class="the-day-sub reveal">Meet us at Montego Bay — June 20, 2026</div>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot">
+        <svg viewBox="0 0 26 26"><circle cx="9" cy="13" r="4.5"/><circle cx="17" cy="13" r="4.5"/></svg>
+      </div>
+      <div class="timeline-time">4 PM</div>
+      <div class="timeline-name">Ceremony</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">
+        <svg viewBox="0 0 26 26"><path d="M7 4h12l-4.5 8v9M8.5 21h9"/></svg>
+      </div>
+      <div class="timeline-time">6 PM</div>
+      <div class="timeline-name">Cocktails</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">
+        <svg viewBox="0 0 26 26"><rect x="4" y="12" width="18" height="10" rx="1"/><path d="M4 12v-2a5 5 0 0 1 10 0v2M13 8v4"/></svg>
+      </div>
+      <div class="timeline-time">7 PM</div>
+      <div class="timeline-name">Cake Cutting</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">
+        <svg viewBox="0 0 26 26"><path d="M13 3v20M9 3c0 4 0 6 4 8"/><path d="M17 3v6a4 4 0 0 1-4 4"/></svg>
+      </div>
+      <div class="timeline-time">7:30 PM</div>
+      <div class="timeline-name">Dinner</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">
+        <svg viewBox="0 0 26 26"><path d="M17 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/><path d="M8 8l5 2 2 5M13 10l4 4-2 5"/></svg>
+      </div>
+      <div class="timeline-time">9 PM</div>
+      <div class="timeline-name">Dancing</div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details" id="details">
+  <div class="details-inner">
+    <div class="details-title reveal">Details</div>
+    <div class="details-grid reveal">
+      <div class="details-cell">
+        <div class="details-cell-label">Venue</div>
+        <div class="details-cell-title">Montego Bay, Jamaica</div>
+        <div class="details-cell-body">Full venue address will be shared with confirmed guests. Reach out directly for early enquiries.</div>
+      </div>
+      <div class="details-cell">
+        <div class="details-cell-label">Dress Code</div>
+        <div class="details-cell-title">Formal Attire</div>
+        <div class="details-cell-body">Cocktail or black tie. Please avoid white and ivory out of respect for the bride.</div>
+      </div>
+      <div class="details-cell">
+        <div class="details-cell-label">Event</div>
+        <div class="details-cell-title">Adults Only</div>
+        <div class="details-cell-body">This is an adults-only celebration. We appreciate your understanding and hope you can arrange accordingly.</div>
+      </div>
+      <div class="details-cell">
+        <div class="details-cell-label">Dietary & Allergies</div>
+        <div class="details-cell-title">Let Us Know</div>
+        <div class="details-cell-body">Please share any dietary requirements or allergies when you RSVP — vegetarian, gluten-free, and all others noted.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp-section" id="rsvp">
+  <div class="rsvp-eyebrow reveal">We'd love to see you there</div>
+  <div class="rsvp-title reveal">RSVP</div>
+  <div class="rsvp-sub reveal">Join us in Jamaica</div>
+  <div class="rsvp-body reveal">
+    Please let us know if you can join us in our celebration. We kindly ask that you reply by June 1, 2026.
+  </div>
+  <div class="rsvp-deadline reveal">Please respond by June 1, 2026</div>
+  <div style="position:relative;" class="reveal">
+    <a class="btn-ivory" href="/cdn-cgi/l/email-protection#caa2afa6a6a58aaba4a4a3ababa4aea0aba7a3afa6e4a9a5a7f5b9bfa8a0afa9bef798999c9aea284a5eea8ba4a4a3abeaeff8fcea80aba7a3afa6">
+      RSVP via Email
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-mono">Annia & Jamiel</div>
+    <div class="footer-info">June 20, 2026 · Montego Bay, Jamaica</div>
+  </div>
+  <div class="footer-credit">Photography by LSALIA Photography</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// NAV
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// SMOOTH SCROLL — enhance native anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+    }
+  });
+});
+
+// COUNTDOWN
+function updateCountdown() {
+  const target = new Date('2026-06-20T16:00:00-05:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+      document.getElementById(id).textContent = '0';
+    });
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = d;
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  document.getElementById('days-phrase').textContent = d + ' days until we say "I do."';
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+reveals.forEach(r => observer.observe(r));
+
+// PERSIST SCROLL
+const saved = localStorage.getItem('ja-scroll');
+if (saved) window.scrollTo(0, parseInt(saved));
+window.addEventListener('scroll', () => {
+  localStorage.setItem('ja-scroll', window.scrollY);
+}, { passive: true });
+</script>
+</body>
+</html>
